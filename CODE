@@ -9,7 +9,7 @@ protected:
 public:
     Department(string name) {
         deptName = name;
-    }
+    }A
     void showDept() {
         cout << "\nDepartment: " << deptName << endl;
     }
