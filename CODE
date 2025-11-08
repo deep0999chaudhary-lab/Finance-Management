@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Department {
+protected:
+    string deptName;
+public:
+    Department(string name) {
+        deptName = name;
+    }
+    void showDept() {
+        cout << "\nDepartment: " << deptName << endl;
+    }
+};
+
+// Derived class: Finance
+class Finance : public Department {
+    float revenue, expenses;
+public:
+    Finance() : Department("Finance") {}
+
+    void inputData() {
+        cout << "Enter total revenue: ";
+        cin >> revenue;
+        cout << "Enter total expenses: ";
+        cin >> expenses;
+    }
+
+    float calculateProfit() {
+        return revenue - expenses;
+    }
+
+    void showDetails() {
+        showDept();
+        cout << "Revenue: " << revenue << endl;
+        cout << "Expenses: " << expenses << endl;
+        cout << "Profit: " << calculateProfit() << endl;
+    }
+};
+
+// Derived class: Marketing
+class Marketing : public Department {
+    int campaigns;
+    float budget;
+public:
+    Marketing() : Department("Marketing") {}
+
+    void inputData() {
+        cout << "Enter number of campaigns: ";
+        cin >> campaigns;
+        cout << "Enter total marketing budget: ";
+        cin >> budget;
+    }
+
+    void showDetails() {
+        showDept();
+        cout << "Campaigns: " << campaigns << endl;
+        cout << "Budget: " << budget << endl;
+        cout << "Average Budget per Campaign: " << (budget / campaigns) << endl;
+    }
+};
+
+// Main program
+int main() {
+    cout << "=== Finance and Marketing Management System ===" << endl;
+
+    Finance finance;
+    Marketing marketing;
+
+    cout << "\n--- Enter Finance Details ---" << endl;
+    finance.inputData();
+
+    cout << "\n--- Enter Marketing Details ---" << endl;
+    marketing.inputData();
+
+    cout << "\n--- Finance Report ---" << endl;
+    finance.showDetails();
+
+    cout << "\n--- Marketing Report ---" << endl;
+    marketing.showDetails();
+
+    return 0;
+}
